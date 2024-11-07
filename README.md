@@ -1,8 +1,9 @@
 # Humanoid SDK Repository
-This repository is for **controlling Dynamixel motors** in a **humanoid robot**, which is part of a side project. The implementation will be based on the `Dynamixel SDK`.
+이 레포지토리는 **휴머노이드 로봇**에서 **다이나믹셀 모터 제어**를 구현하기 위한 프로젝트입니다. **ROBOTIS**의 `Dynamixel SDK`를 기반으로 개발할 예정입니다.
 
 ## Main Branch Information
-The main branch of this repository is `humble-devel`, forked from [ROBOTIS-GIT/DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK).
+본 레포지토리의 `main` 브랜치는 원본 레포지토리의 `master` 브랜치가 아닌, `humble-devel` 브랜치로 설정되어 있습니다.
+> forked from [ROBOTIS-GIT/DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK)
 
 <!--
 <img src="http://emanual.robotis.com/assets/images/sw/sdk/dynamixel_sdk/overview/dynamixel_sdk_concept_logo.jpg">
