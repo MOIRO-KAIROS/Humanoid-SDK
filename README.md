@@ -5,6 +5,10 @@
 본 레포지토리의 `main` 브랜치는 원본 레포지토리의 `master` 브랜치가 아닌, `humble-devel` 브랜치로 설정되어 있습니다.
 > forked from [ROBOTIS-GIT/DynamixelSDK](https://github.com/ROBOTIS-GIT/DynamixelSDK)
 
+## SW version.
+- ROS2 C++로 구현
+  - 본 기능은 ROS2 환경에서 C++로 구현될 예정이며, Python에서도 사용할 수 있도록 해당 기능을 Python 모듈로 임포트 가능한 형태로 제공할 계획입니다.
+
 <!--
 <img src="http://emanual.robotis.com/assets/images/sw/sdk/dynamixel_sdk/overview/dynamixel_sdk_concept_logo.jpg">
 
