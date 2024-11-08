@@ -21,12 +21,6 @@ class HumanoidSDK
         HumanoidSDK();
         ~HumanoidSDK();
 
-        /* Humanoid Setup API */
-        void setupDynamixel(uint8_t dxl_id);
-
-        /* Humanoid Control API */
-        void setGoalPosition(uint8_t dxl_id, uint32_t goal_position);
-
     private:
         dynamixel::PortHandler * portHandler;
         dynamixel::PacketHandler * packetHandler;
