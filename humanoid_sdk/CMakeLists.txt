@@ -8,31 +8,6 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(dynamixel_sdk REQUIRED)
-find_package(rclcpp REQUIRED)
-
-# add include directories
-include_directories(
-  include
-  ${dynamixel_sdk_INCLUDE_DIRS}
-)
-
-install(
-  DIRECTORY include/
-  DESTINATION include/
-)
-
-# Build
-add_executable(humanoid_sdk_example src/humanoid_sdk_example.cpp)
-ament_target_dependencies(humanoid_sdk_example
-  dynamixel_sdk
-  rclcpp
-)
-
-# Install
-install(TARGETS
-  humanoid_sdk_example
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
