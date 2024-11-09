@@ -8,6 +8,9 @@
 #define ADDR_GOAL_POSITION 30
 #define ADDR_PRESENT_POSITION 36
 
+#define TORQUE_DISABLE 0
+#define TORQUE_ENABLE 1
+
 // Protocol version
 #define PROTOCOL_VERSION 1.0  // Default Protocol version of DYNAMIXEL AX-12A
 
@@ -20,6 +23,18 @@ class HumanoidSDK
     public:
         HumanoidSDK();
         ~HumanoidSDK();
+
+        /* Setting Dynamixel Model */
+        void setupDynamixel(uint8_t dxl_id);
+        void MultiDynamixelSetup(uint8_t * dxl_id, uint8_t dxl_cnt);
+
+        /* Control Dynamixel AX-12A */
+        // Write data to Dynamixel
+        void writeDynamixel(uint8_t dxl_id, uint16_t addr, uint16_t data); 
+        void MultiDynamixelWrite(uint8_t * dxl_id, uint8_t dxl_cnt, uint16_t addr, uint16_t * data);
+
+        // Read data from Dynamixel
+        uint16_t readDynamixel(uint8_t dxl_id, uint16_t addr);
 
     private:
         dynamixel::PortHandler * portHandler;

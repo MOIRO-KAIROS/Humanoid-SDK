@@ -1,0 +1,10 @@
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/uninstall.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/humanoid_sdk_uninstall.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/humanoid_sdk_example.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/test.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/edit_cache.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/rebuild_cache.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/list_install_components.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/install.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/install/local.dir
+/home/godssi/Humanoid-SDK/build/humanoid_sdk/CMakeFiles/install/strip.dir
