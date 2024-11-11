@@ -1,33 +1,34 @@
-#ifndef HHUMANOID_SDK_HUMANOIDSDK_HPP_
-#define HUMANOID_SDK_HUMANOIDSDK_HPP_
+#ifndef HUMANOID_SDK_HPP
+#define HUMANOID_SDK_HPP
 
 #include "dynamixel_sdk/dynamixel_sdk.h"
+#include "rclcpp/rclcpp.hpp"
 
-// Control table address for AX-12A
-#define ADDR_TORQUE_ENABLE 24
-#define ADDR_GOAL_POSITION 30
-#define ADDR_PRESENT_POSITION 36
+class HumanoidSDK {
+public:
+    HumanoidSDK(const std::string& device_name, float protocol_version, int baudrate);
+    ~HumanoidSDK();
+    
+    void DynamixelSetup(uint8_t dxl_id);
+    void DynamixelWrite(uint8_t dxl_id, uint32_t goal_position);
+    uint16_t DynamixelRead(uint8_t dxl_id);
+    void DynamixelClose(uint8_t dxl_id);
 
-// Protocol version
-#define PROTOCOL_VERSION 1.0  // Default Protocol version of DYNAMIXEL AX-12A
+    // Multi-motor operations
+    void MultiDynamixelSetup(const std::vector<uint8_t>& ids);
+    void MultiDynamixelWrite(const std::vector<uint8_t>& ids, const std::vector<uint32_t>& goal_positions);
+    std::vector<uint16_t> MultiDynamixelRead(const std::vector<uint8_t>& ids);
+    void MultiDynamixelClose(const std::vector<uint8_t>& ids);
 
-// Default setting
-#define BAUDRATE 1000000  // Default Baudrate of DYNAMIXEL AX-12A
-#define DEVICE_NAME "/dev/ttyUSB0"  // [Linux]: "/dev/ttyUSB*", [Windows]: "COM*"
 
-class HumanoidSDK
-{
-    public:
-        HumanoidSDK();
-        ~HumanoidSDK();
-
-    private:
-        dynamixel::PortHandler * portHandler;
-        dynamixel::PacketHandler * packetHandler;
-
-        uint8_t dxl_error = 0;
-        uint32_t goal_position = 0;
-        int dxl_comm_result = COMM_TX_FAIL;
+private:
+    dynamixel::PortHandler* portHandler;
+    dynamixel::PacketHandler* packetHandler;
+    uint8_t dxl_error;
+    int dxl_comm_result;
+    
+    void setupDynamixel(uint8_t dxl_id);
+    void closeDynamixel(uint8_t dxl_id);
 };
 
-#endif // HHUMANOID_SDK_HUMANOIDSDK_HPP_
+#endif  // HUMANOID_SDK_HPP
