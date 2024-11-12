@@ -31,6 +31,7 @@ HumanoidSDK::HumanoidSDK(const std::string& device_name, float protocol_version,
     } else {
         RCLCPP_INFO(rclcpp::get_logger("HumanoidSDK"), "Succeeded to set the baudrate.");
     }
+    is_initialized = (dxl_comm_result || dxl_comm_result);
 }
 
 HumanoidSDK::~HumanoidSDK() {

@@ -19,14 +19,14 @@ public:
     void MultiDynamixelWrite(const std::vector<uint8_t>& ids, const std::vector<uint32_t>& goal_positions);
     std::vector<uint16_t> MultiDynamixelRead(const std::vector<uint8_t>& ids);
     void MultiDynamixelClose(const std::vector<uint8_t>& ids);
-
+    bool is_initialized = false;
 
 private:
     dynamixel::PortHandler* portHandler;
     dynamixel::PacketHandler* packetHandler;
     uint8_t dxl_error;
     int dxl_comm_result;
-    
+
     void setupDynamixel(uint8_t dxl_id);
     void closeDynamixel(uint8_t dxl_id);
 };
