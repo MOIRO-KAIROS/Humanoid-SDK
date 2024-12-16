@@ -29,22 +29,22 @@ ament_target_dependencies(read_write_node
   dynamixel_sdk
   rclcpp
 )
-add_executable(read_write_multi src/read_write_multi.cpp)
-ament_target_dependencies(read_write_multi
-  dynamixel_sdk_custom_interfaces
-  dynamixel_sdk
-  rclcpp
-)
+# add_executable(read_write_multi src/read_write_multi.cpp)
+# ament_target_dependencies(read_write_multi
+#   dynamixel_sdk_custom_interfaces
+#   dynamixel_sdk
+#   rclcpp
+# )
 
 # Install
 install(TARGETS
   read_write_node
   DESTINATION lib/${PROJECT_NAME}
 )
-install(TARGETS
-  read_write_multi
-  DESTINATION lib/${PROJECT_NAME}
-)
+# install(TARGETS
+#   read_write_multi
+#   DESTINATION lib/${PROJECT_NAME}
+# )
 
 # Test
 if(BUILD_TESTING)

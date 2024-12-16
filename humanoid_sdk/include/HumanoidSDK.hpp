@@ -4,31 +4,40 @@
 #include "dynamixel_sdk/dynamixel_sdk.h"
 #include "rclcpp/rclcpp.hpp"
 
+// struct ControlTable {
+//     uint8_t torque_enable;
+//     uint8_t goal_position;
+//     uint8_t present_position;
+// };
+
 class HumanoidSDK {
 public:
-    HumanoidSDK(const std::string& device_name, float protocol_version, int baudrate);
+    HumanoidSDK(const std::string& device_name, float protocol_version, int baudrate, const std::string& dxl_series = "AX-12A");
     ~HumanoidSDK();
-    
-    void DynamixelSetup(uint8_t dxl_id);
-    void DynamixelWrite(uint8_t dxl_id, uint32_t goal_position);
-    uint16_t DynamixelRead(uint8_t dxl_id);
-    void DynamixelClose(uint8_t dxl_id);
 
-    // Multi-motor operations
-    void MultiDynamixelSetup(const std::vector<uint8_t>& ids);
-    void MultiDynamixelWrite(const std::vector<uint8_t>& ids, const std::vector<uint32_t>& goal_positions);
-    std::vector<uint16_t> MultiDynamixelRead(const std::vector<uint8_t>& ids);
-    void MultiDynamixelClose(const std::vector<uint8_t>& ids);
-    bool is_initialized = false;
+    void SetupDynamixel(uint8_t dxl_id);
+    void CloseDynamixel(uint8_t dxl_id);
+    void WriteGoalPosition(uint8_t dxl_id, uint16_t goal_position);
+    uint16_t ReadGoalPosition(uint8_t dxl_id);
+    bool getDxlStatus();
+    
+    // // Multi-motor operations
+    void SetupMultiDynamixel(const std::vector<uint8_t>& ids);
+    void WriteMultiGoalPosition(const std::vector<uint8_t>& ids, const std::vector<uint16_t>& goal_positions);
+    std::vector<uint16_t> ReadMultiGoalPosition(const std::vector<uint8_t>& ids);
+    void CloseMultiDynamixel(const std::vector<uint8_t>& ids);
 
 private:
     dynamixel::PortHandler* portHandler;
     dynamixel::PacketHandler* packetHandler;
-    uint8_t dxl_error;
-    int dxl_comm_result;
+    // std::map<std::string, ControlTable> motor_tables;
 
-    void setupDynamixel(uint8_t dxl_id);
-    void closeDynamixel(uint8_t dxl_id);
+    uint8_t dxl_error;
+    int dxl_comm_result = COMM_TX_FAIL;
+    const std::string& dxl_series;
+
+    void TurnOffTorque(uint8_t dxl_id);
+    void EnableTorque(uint8_t dxl_id);
 };
 
 #endif  // HUMANOID_SDK_HPP
